@@ -14,19 +14,16 @@ public class UserService {
     }
 
     public CurrentRosterDTO getCurrentRoster() {
-        if(userRepository.findAll() != null){
-            return new CurrentRosterDTO(UserConverter.convertListToDTOs(userRepository.findAll()));
-        }
-       return null;
-    };
+        return new CurrentRosterDTO(UserConverter.convertListToDTOs(userRepository.findAll()));
+    }
     public void saveNewCharacter(UserDTO userDTO){
         userRepository.save(UserConverter.convertToDAO(userDTO));
-    };
+    }
     public void deleteCharacter(UserDTO userDTO){
         userRepository.delete(UserConverter.convertToDAO(userDTO));
-    };
+    }
     public UserDTO updateCharacter(UserDTO userDTO){
         User savedUser = userRepository.save(UserConverter.convertToDAO(userDTO));
         return UserConverter.convertToDTO(savedUser);
-    };
+    }
 }
